@@ -11,9 +11,9 @@
 
 //MAKE DEFINES FOR ALL THE PINS AND PORTS HERE.
 
-void delay_s(int number_of_seconds) {
+void delay_s(unsigned int number_of_seconds) {
 	// Converting time into milli_seconds
-	int milli_seconds = 1000 * number_of_seconds;
+	unsigned int milli_seconds = 1000 * number_of_seconds;
 
 	// Stroing start time
 	clock_t start_time = clock();
@@ -75,7 +75,6 @@ void command_mode(void) {
 
 	//Set enable to 0.
 	Chip_GPIO_SetPinState(LPC_GPIO, ENABLE_PORT, ENABLE_PIN, false);
-
 }
 
 void data_mode(void)
@@ -86,14 +85,14 @@ void data_mode(void)
 
 void setbus(char c) {
 	/* set bits 0-7 according to char which can be passed as: "0bxxxxxxxx" or char*/
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA0_PORT, DATA0_PIN, c & 0b00000001);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA1_PORT, DATA1_PIN, c & 0b00000010);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA2_PORT, DATA2_PIN, c & 0b00000100);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA3_PORT, DATA3_PIN, c & 0b00001000);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA4_PORT, DATA4_PIN, c & 0b00010000);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA5_PORT, DATA5_PIN, c & 0b00100000);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA6_PORT, DATA6_PIN, c & 0b01000000);
-	Chip_GPIO_SetPinState(LPC_GPIO, DATA7_PORT, DATA7_PIN, c & 0b10000000);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA0_PORT, DATA0_PIN, c & 0x1);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA1_PORT, DATA1_PIN, c & 0x2);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA2_PORT, DATA2_PIN, c & 0x4);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA3_PORT, DATA3_PIN, c & 0x8);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA4_PORT, DATA4_PIN, c & 0x10);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA5_PORT, DATA5_PIN, c & 0x20);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA6_PORT, DATA6_PIN, c & 0x40);
+	Chip_GPIO_SetPinState(LPC_GPIO, DATA7_PORT, DATA7_PIN, c & 0x80);
 }
 
 void toggle_enable(void) {
@@ -109,7 +108,6 @@ void toggle_enable(void) {
 
 void lcd_write(char c) {
 	setbus(c);
-	//delay for 10 microseconds
 	toggle_enable();
 }
 
@@ -138,7 +136,7 @@ void clear_mode(void) {
 
 //initialise LCD function
 void LCD_init(void) {
-	delay_s(0.02); // pause for 20 ms
+	delay_s(0.002); // pause for 20 ms
 	/* Initializes GPIO */
 	Chip_GPIO_Init(LPC_GPIO);
 	Chip_IOCON_Init(LPC_IOCON);

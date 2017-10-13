@@ -30,6 +30,7 @@
  */
 
 #include "board.h"
+#include "LCD.h"
 #include <stdio.h>
 // To use time library of C
 
@@ -40,14 +41,9 @@ int main(void) {
 
 	LCD_init();
 
-	char ch='a';
-	char_to_LCD(ch);
-
 	char * string;
 	string="hello world";
 	string_to_LCD(string);
-
-	while(1);
 
 	return 0;
 }

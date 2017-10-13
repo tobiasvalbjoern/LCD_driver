@@ -53,7 +53,8 @@ example/src/main.o example/src/main.d: ../example/src/main.c \
  C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_devkit_4088\inc/uda1380.h \
  C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_devkit_4088\inc/board_api.h \
  C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_40xx\inc/lpc_types.h \
- C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_devkit_4088\inc/lpc_phy.h
+ C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_devkit_4088\inc/lpc_phy.h \
+ ../example/src/LCD.h
 
 C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_devkit_4088\inc/board.h:
 
@@ -164,3 +165,5 @@ C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_
 C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_40xx\inc/lpc_types.h:
 
 C:\Users\Test\ Bruger\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_board_ea_devkit_4088\inc/lpc_phy.h:
+
+../example/src/LCD.h:

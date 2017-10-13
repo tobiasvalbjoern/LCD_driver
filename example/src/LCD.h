@@ -49,9 +49,14 @@
 #define DATA7_PORT 1
 #define DATA7_PIN 2
 
-#define FUNCTION_MODE 	0b00110000
-#define DISPLAY_MODE 	0b00001111
-#define CLEAR_MODE		0b00000001
+//0b00110000
+#define FUNCTION_MODE 	0x30
+
+//0b00001111
+#define DISPLAY_MODE 	0xF
+
+//0b00000001
+#define CLEAR_MODE		0x1		
 
 
 void LCD_init(void); //function to initialise the LCD
