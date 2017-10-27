@@ -5,11 +5,11 @@
  * Generated linker script file for LPC4088
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.23
- * MCUXpresso IDE v10.0.2 [Build 411] [2017-07-11]  on 12-10-2017 14:06:56
+ * MCUXpresso IDE v10.0.2 [Build 411] [2017-07-11]  on 25-10-2017 15:35:52
  */
 
-INCLUDE "periph_blinky_Debug_library.ld"
-INCLUDE "periph_blinky_Debug_memory.ld"
+INCLUDE "lcd_driver_Tobias_Release_library.ld"
+INCLUDE "lcd_driver_Tobias_Release_memory.ld"
 
 ENTRY(ResetISR)
 

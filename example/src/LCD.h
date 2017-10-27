@@ -1,19 +1,6 @@
 #ifndef LCD_H
 #define LCD_H
 
-//Control pins and ports.
-// RS pin 5
-#define RS_PORT 1
-#define RS_PIN 24
-
-// R/W pin 19
-#define RW_PORT 1
-#define RW_PIN 30
-
-// Enable Configure pin 20
-#define ENABLE_PORT 1
-#define ENABLE_PIN 31
-
 
 //Data pins and ports
 
@@ -49,6 +36,22 @@
 #define DATA7_PORT 1
 #define DATA7_PIN 2
 
+
+// RS pin 31
+#define RS_PORT 5
+#define RS_PIN 3
+
+
+// R/W pin 32
+#define RW_PORT 5
+#define RW_PIN 2
+
+// Enable Configure pin 33
+#define ENABLE_PORT 0
+#define ENABLE_PIN 5
+
+
+
 //0b00110000
 #define FUNCTION_MODE 	0x30
 
@@ -59,8 +62,9 @@
 #define CLEAR_MODE		0x1		
 
 
-void LCD_init(void); //function to initialise the LCD
-void char_to_LCD(char value); //function to display characters
-void string_to_LCD(char* string); //function to display a string
+void lcd_init(void); 
+void char_to_LCD(char value); 
+void string_to_LCD(char* string); 
+void delay_s(unsigned int number_of_seconds);
 
 #endif

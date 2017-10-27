@@ -32,19 +32,20 @@
 #include "board.h"
 #include "LCD.h"
 #include <stdio.h>
-// To use time library of C
+
 
 int main(void) {
-	/* Generic Initialization */
+
+	delay_s(5);
 	SystemCoreClockUpdate();
 	Board_Init();
 
-	LCD_init();
+	lcd_init();
 
 	char * string;
 	string="hello world";
 	string_to_LCD(string);
 
-	return 0;
+	return (0);
 }
 
