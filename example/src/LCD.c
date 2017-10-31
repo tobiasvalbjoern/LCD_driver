@@ -8,12 +8,11 @@
 #include "LCD.h"
 #include "board.h"
 
-void delay_s(unsigned int number_of_seconds) {
+void delay_ms(int ms) {
+int i = 40000*ms;
 
-	unsigned int milli_seconds = 1000 * number_of_seconds;
-	clock_t start_time = clock();
-	while (clock() < start_time + milli_seconds)
-		;
+while (i--);
+
 }
 
 /**
@@ -60,15 +59,12 @@ void command_mode(void) {
 
 	Chip_GPIO_SetPinState(LPC_GPIO, RS_PORT, RS_PIN, 0);
 
-
 	Chip_GPIO_SetPinState(LPC_GPIO, RW_PORT, RW_PIN, 0);
-
 
 	Chip_GPIO_SetPinState(LPC_GPIO, ENABLE_PORT, ENABLE_PIN, 0);
 }
 
-void data_mode(void)
-{
+void data_mode(void) {
 	Chip_GPIO_SetPinState(LPC_GPIO, RS_PORT, RS_PIN, 1);
 }
 
@@ -87,12 +83,11 @@ void setbus(char c) {
 void toggle_enable(void) {
 
 	Chip_GPIO_SetPinState(LPC_GPIO, ENABLE_PORT, ENABLE_PIN, 1);
-	delay_s(0.001);
+	delay_ms(10);
 
-	Chip_GPIO_SetPinState(LPC_GPIO, ENABLE_PORT, ENABLE_PIN,0);
-	delay_s(0.001);
+	Chip_GPIO_SetPinState(LPC_GPIO, ENABLE_PORT, ENABLE_PIN, 0);
+	delay_ms(10);
 }
-
 
 void lcd_write(char c) {
 	setbus(c);
@@ -106,7 +101,7 @@ void function_mode(void) {
 
 	lcd_write(FUNCTION_MODE);
 	toggle_enable();
-	delay_s(0.001);
+
 }
 
 void display_mode(void) {
@@ -121,9 +116,8 @@ void clear_mode(void) {
 	toggle_enable();
 }
 
-
 void lcd_init(void) {
-	delay_s(0.002);
+	delay_ms(10);
 	Chip_GPIO_Init(LPC_GPIO);
 	Chip_IOCON_Init(LPC_IOCON);
 
@@ -131,9 +125,19 @@ void lcd_init(void) {
 	datapin_output();
 	command_mode();
 	function_mode();
-	//delay_s(1);
 	display_mode();
 	clear_mode();
+}
+
+void set_line(int line) {
+	command_mode();
+	if (line) {
+		lcd_write(JUMP_LINE_1);
+	}
+	else{
+		lcd_write(JUMP_LINE_0);
+	}
+	toggle_enable();
 }
 
 void char_to_LCD(char value) {
@@ -141,7 +145,6 @@ void char_to_LCD(char value) {
 	data_mode();
 	lcd_write(value);
 }
-
 
 void string_to_LCD(char *string) {
 	while (*string) {

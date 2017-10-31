@@ -36,16 +36,17 @@
 
 int main(void) {
 
-	delay_s(5);
+
 	SystemCoreClockUpdate();
 	Board_Init();
-
+	delay_ms(1000);
 	lcd_init();
 
 	char * string;
-	string="hello world";
+	string="hello world more than 20 chars";
 	string_to_LCD(string);
-
+	set_line(1);
+	string_to_LCD(string);
 	return (0);
 }
 

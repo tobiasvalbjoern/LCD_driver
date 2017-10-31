@@ -52,8 +52,8 @@
 
 
 
-//0b00110000
-#define FUNCTION_MODE 	0x30
+//0b00111000 . 8 bit , 2 line
+#define FUNCTION_MODE 	0x38
 
 //0b00001111
 #define DISPLAY_MODE 	0xF
@@ -61,10 +61,13 @@
 //0b00000001
 #define CLEAR_MODE		0x1		
 
+#define JUMP_LINE_0		0x80
+#define JUMP_LINE_1		0xC0
 
 void lcd_init(void); 
 void char_to_LCD(char value); 
 void string_to_LCD(char* string); 
-void delay_s(unsigned int number_of_seconds);
+void delay_ms(int number_of_seconds);
+void set_line(int line);
 
 #endif
